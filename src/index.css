@@ -34,14 +34,18 @@ body {
   background-color: black;
 }
 
-/* GTA V Navbar Styles */
+/* ==================== GTA NAVBAR UPDATED ==================== */
 .gta-navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 0.75rem 2rem;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
   background: transparent;
+  z-index: 1000;
 }
 
 .gta-logo {
@@ -49,48 +53,86 @@ body {
   filter: drop-shadow(0 0 2px #fff);
 }
 
+/* Hamburger Button */
 .gta-menu-btn {
+  position: relative;
+  width: 36px;
+  height: 26px;
   background: none;
   border: none;
   cursor: pointer;
-  padding: 0;
+  z-index: 1001;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
-.gta-menu-icon {
-  width: 36px;
-  height: 36px;
-  filter: drop-shadow(0 0 2px #fff);
+.gta-menu-btn span {
+  display: block;
+  height: 4px;
+  background: #fff9cb;
+  border-radius: 2px;
+  transition: all 0.4s ease;
 }
 
+/* Hamburger open animation */
+.gta-menu-btn.open span:nth-child(1) {
+  transform: translateY(11px) rotate(45deg);
+}
+.gta-menu-btn.open span:nth-child(2) {
+  opacity: 0;
+}
+.gta-menu-btn.open span:nth-child(3) {
+  transform: translateY(-11px) rotate(-45deg);
+}
+
+/* Slide-in Menu */
 .gta-navbar-menu {
-  position: absolute;
-  top: 60px;
-  right: 2rem;
-  background: rgba(24,24,24,0.98);
-  border-radius: 8px;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.2);
-  padding: 1rem 2rem;
-  z-index: 1000;
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 100%;
+  height: 100vh;
+  background: rgba(12, 12, 12, 0.95);
+  backdrop-filter: blur(8px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding-left: 10vw;
+  transition: right 0.5s ease;
+  z-index: 999;
 }
+
+.gta-navbar-menu.active {
+  right: 0;
+}
+
 .gta-navbar-menu ul {
   list-style: none;
   margin: 0;
   padding: 0;
 }
+
 .gta-navbar-menu li {
-  margin: 1rem 0;
+  margin: 1.5rem 0;
 }
+
 .gta-navbar-menu a {
   color: #fff9cb;
   text-decoration: none;
   font-family: var(--font-round-bold);
-  font-size: 1.2rem;
+  font-size: 3rem;
   letter-spacing: 1px;
-  transition: color 0.2s;
+  transition: color 0.3s ease, text-shadow 0.3s ease;
 }
+
 .gta-navbar-menu a:hover {
   color: #ffb0c4;
+  text-shadow: 0 0 10px #ffb0c4;
 }
+
+/* ============================================================ */
 
 main {
   background: linear-gradient(
@@ -310,3 +352,4 @@ main {
 .lucia-life-content {
   background: radial-gradient(ellipse, #111117 20%, transparent 70%);
 }
+
